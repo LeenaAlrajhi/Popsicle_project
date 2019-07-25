@@ -3,6 +3,24 @@ from django.shortcuts import reverse
 from django.contrib.auth.models import User
 
 
+CATEGORY_CHOICES = (
+    ('O' , 'Organic'),
+    ('N' , 'Natural'),
+    ('F' , 'Fresh'),
+    ('V' , 'Vegetable'),
+    ('GF' , 'Gluten Free'),
+    ('EB' , 'Events Box'),
+
+)
+
+# LABEL_CHOICES = (
+#     ('P' , 'primary'),
+#     ('S' , 'secondary'),
+#     ('D' , 'danger'),
+
+# )
+
+
 class Profile (models.Model) :
 
     user = models.OneToOneField(User, on_delete = models.CASCADE)
@@ -36,6 +54,8 @@ class Popsicle (models.Model) :
     quantity = models.CharField(max_length = 10) #  all, how I make buyers determine how much they want
     description = models.TextField()
     picture = models.ImageField(upload_to='popsicle-image')
+    category = models.CharField(choices = CATEGORY_CHOICES, max_length = 2)
+    # label = models.CharField(choices = LABEL_CHOICES, max_length = 1) << change color of each category
 
     def __str__(self) :
         return self.name

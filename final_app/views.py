@@ -142,5 +142,16 @@ def user_logout (request) :
     return HttpResponseRedirect(reverse("home"))
 
                 
-# def cart 
+# Cart Page
+
+# def product_list (request) :
+
+#     popsicles = Popsicle.objects.all()
+
+#     data = {
+#         "popsicles" : popsicles
+
+#     }
+#     return render (request, "product_list.html", data)
+
 
