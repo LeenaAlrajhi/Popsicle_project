@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
-from .models import Popsicle, Profile
+from .models import Popsicle, Profile, Order
 from django.contrib.auth.models import User
 from .forms import PopsicleForm, ContactForm, ProfileForm, UserForm, LoginForm
 from django.contrib import messages
@@ -142,6 +142,5 @@ def user_logout (request) :
     return HttpResponseRedirect(reverse("home"))
 
                 
-
-
+# def cart 
 

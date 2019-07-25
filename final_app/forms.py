@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Popsicle, Profile
+from .models import Popsicle, Profile, Order
 
 class PopsicleForm (forms.ModelForm) :
     class Meta :
@@ -19,7 +19,7 @@ class ContactForm (forms.Form) :
 class ProfileForm (forms.ModelForm) :
     class Meta :
         model = Profile
-        fields = ["mobile", "mobileReserve",]
+        fields = ["mobile", "mobileReserve"]
 
 
 class UserForm (forms.ModelForm) :
@@ -38,3 +38,9 @@ class LoginForm (forms.Form) :
 
     username = forms.CharField(max_length=100, )
     password = forms.CharField(widget = forms.PasswordInput)
+
+
+class OrderForm (forms.ModelForm) :
+    class Meta :
+        model = Order
+        fields = ["purchaser", "location", "deliveryTime", "payment_options"]

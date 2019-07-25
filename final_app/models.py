@@ -1,9 +1,47 @@
 from django.db import models
-from datetime import datetime
 from django.shortcuts import reverse
 from django.contrib.auth.models import User
 
+
+class Profile (models.Model) :
+
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    mobile = models.CharField(max_length = 20)
+    mobileReserve = models.CharField(max_length = 20)
+    # location = models.CharField()
+
+
+    def __str__(self):
+        return self.user.username
+
+
+class Order (models.Model) :
+
+    purchaser = models.ForeignKey(Profile, on_delete= models.CASCADE)
+    orderNumber = models.CharField(max_length = 30)
+    location = models.CharField(max_length = 100)
+    
+    time = (
+        
+        ('1', '10AM-to-1PM'),
+        ('2', '1PM-to-4PM'),
+        ('3', '4PM-to-7PM'),
+        ('4', '7PM-to-10PM'),
+    )
+
+    deliveryTime = models.CharField(max_length = 1 , choices = time) 
+
+    choice = [('1' , 'Card') , ('2' , 'Cash on Delivery')]
+
+    payment_options = models.CharField(max_length = 1, choices = choice, default = '1' )
+
+
+    # def is_upperclass(self):
+    #     return self.year_in_school in (self.JUNIOR, self.SENIOR)
+
+
 class Popsicle (models.Model) :
+    # order = models.ForeignKey(Order, on_delete= models.CASCADE)   <<<CHECK>>>
     name = models.CharField(max_length = 100)
     UPC = models.CharField(max_length = 12)  # Universal Product Code (UPC)
     flavor = models.CharField(max_length = 30) # remove ?
@@ -29,27 +67,3 @@ class Popsicle (models.Model) :
 
     def get_absolute_url(self) :
         return reverse ("detail", args=[str(self.id)])
-
-
-class Profile (models.Model) :
-
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    mobile = models.CharField(max_length = 20)
-    mobileReserve = models.CharField(max_length = 20)
-    # location = models.CharField()
-
-    # time = (
-        
-    #     ('1', '10AM-to-1PM'),
-    #     ('2', '1PM-to-4PM'),
-    #     ('3', '4PM-to-7PM'),
-    #     ('4', '7PM-to-10PM'),
-    # )
-
-    # deliveryTime = models.CharField(max_length = 1 , choices = time) <<< model order
-
-
-    def __str__(self):
-        return self.user.username
-
-
