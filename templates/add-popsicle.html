@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Popsicles Store | Add Popsicle
+{% endblock %}
+
+
+{% block body %}
+
+<div class="outside-contsiner">
+        
+    <div class="middle-contsiner" >
+
+        <h1>Add Popsicle</h1>
+        
+            <div class="inside-contsiner">
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="btn-contsiner"><input type="submit" name="add-popsicle" value="Add Popsicle" class="btn"></div>
+                    </form>
+                
+            </div>
+    </div>
+
+</div>
+
+{% endblock %}

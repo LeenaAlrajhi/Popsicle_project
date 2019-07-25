@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Popsicles Store | Login
+{% endblock %}
+
+
+{% block body %}
+
+<div class="outside-contsiner">
+        
+    <div class="middle-contsiner" >
+
+        <h1>Login</h1>
+        
+            <div class="inside-contsiner">
+
+                    <form action="" method="POST" >
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        
+                        <div class="btn-contsiner"><input type="submit" name="Login" value="Login" class="btn"></div>
+                    </form>
+                
+            </div>
+    </div>
+
+</div>
+
+<script>
+
+    var btn = document.querySelector(".btn");
+
+    btn.addEventListener("clike", function(event) {
+
+        alert("Welcome "+ user);
+
+    }, );
+
+
+</script>
+
+{% endblock %}

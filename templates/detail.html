@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title%}
+
+Popsicles Store | {{popsicle.name}}
+
+{% endblock %}
+
+
+{% block body %}
+
+<div class="outside-contsiner">
+
+    <div class="middle-contsiner">
+            
+        <div class="inside-contsiner">
+
+            <div class="left-slide">
+
+                <h2>{{popsicle.name}}</h2>
+                <p>Flavor : {{popsicle.flavor}}</p>
+                <p>Price : {{popsicle.price}} <em class="currency">SR</em></p>
+                <p>Description: {{popsicle.description}}</p>
+
+            </div>
+
+            <div class="right-slide">
+                <img src="{{ popsicle.picture.url }}" width="500">
+            </div>
+            
+
+            <div class="clr">
+                <div class="btn-contsiner"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn" ></div>
+            </div>
+
+                
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

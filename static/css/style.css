@@ -1,0 +1,274 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {   
+    /* background-color: #dab5cc;; */
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-family: "Comic Sans MS", cursive, sans-serif;
+
+}
+
+.clr {
+    clear: both;
+}
+/* Navbar */
+
+#navbar {
+    background-color:  #4f5557a1;
+    
+    color: #DFDCE1;
+    height: 62px;
+    position: sticky;
+    top: 0px;
+    overflow: hidden;
+
+}
+
+.logo {
+    float: left;
+    padding-left: 20px;
+    font-size: 20px;
+    padding-top: 4px;
+
+}
+
+.logo samp {
+    margin-top: 20px;
+}
+
+
+#navbar h1 {
+    float: left;
+
+}
+
+#navbar ul {
+    float: right;
+    overflow: hidden;
+    padding: 17px;
+    font-size: 20px;
+
+}
+
+#navbar ul li {
+    float: left;
+    padding-right: 30px;
+    list-style-type: none;
+
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    /* color: #6E462B; */
+    color: #DFDCE1;
+
+}
+
+#navbar ul li a:hover {
+    color: #cbc7ce
+
+}
+
+
+
+/* Slideshow */
+
+#slideshow {
+    background-image: url("../images/SesameCoconutPopsicles-5.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 2000px;
+
+}
+
+.outside-contsiner {
+    width: 80%;
+    /* height: 400px; remove */
+    /* background-color: rgba(182, 182, 182, 0.349) ; */
+    /* background-color: #94465048; */
+    background-color: #a9a5a44e;
+    padding: 70px;
+    padding-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+}
+
+.outside-contsiner h1 {
+    color: #4B2526;
+    text-align: center;
+    font-size: 60px;
+}
+
+
+.outside-contsiner .middle-contsiner {
+    width: 80%;
+    background-color: #a9a5a472;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+    overflow: hidden;
+
+}
+
+
+.outside-contsiner .middle-contsiner .inside-contsiner {
+    width: 100%;
+    padding: 40px;
+    font-size: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #4B2526;
+    overflow: hidden;
+
+}
+
+
+.outside-contsiner .middle-contsiner .inside-contsiner input, textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+/* .outside-contsiner .middle-contsiner .inside-contsiner label {
+    display: block;
+} */
+
+
+/* Home Page */
+
+.outside-contsiner .middle-contsiner .inside-contsiner .item {
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30%;
+    float: left;
+    background-color: #a9a5a497;
+    /* background-color: #000000; */
+
+    color: #283332; 
+    font-size: 20px;
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .item img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.outside-contsiner .middle-contsiner .inside-contsiner .item strong {
+    font-size: 30px;
+    font-style: normal;
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .item strong a {
+    color: #4B2526;
+    text-decoration: none;
+
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .item strong a:hover {
+    color: #4b2526c8;
+    
+
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .currency {
+    font-style: normal;
+
+}
+
+
+/* Detail Page */
+
+.outside-contsiner .middle-contsiner .inside-contsiner .left-slide {
+    float: left;
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .right-slide {
+    float: right;
+}
+
+.outside-contsiner .middle-contsiner .inside-contsiner .left-slide h2 {
+    padding-bottom: 30px;
+}
+
+
+/* Add Page */
+
+
+
+/* Contact Page */
+
+
+
+/* Buttons */
+
+.btn-contsiner {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.btn {
+    width: 230px;
+    height: 60px;
+    font-size: 22px;
+    /* background-color: #838180; */
+    background-color: #4b2526c6;
+    color: #DFDCE1;
+    border: 0px solid ;
+    border-radius: 8px;
+
+ 
+}
+
+.btn:hover {
+    background-color: #4B2526;
+    color: #c0bec2;
+    cursor: pointer;
+}
+
+.btn-up {
+    float: right;
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 100px;
+    right: 80px;
+}
+
+.btn-up:hover {
+    color: black;
+}
+
+/* Footer */
+
+footer {
+    background-color:  #626668b9;
+    color: #DFDCE1;
+    height: 60px;
+    text-align: center;
+    padding: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
