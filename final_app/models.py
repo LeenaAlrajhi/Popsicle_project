@@ -15,31 +15,6 @@ class Profile (models.Model) :
         return self.user.username
 
 
-class Order (models.Model) :
-
-    purchaser = models.ForeignKey(Profile, on_delete= models.CASCADE)
-    orderNumber = models.CharField(max_length = 30)
-    location = models.CharField(max_length = 100)
-    
-    time = (
-        
-        ('1', '10AM-to-1PM'),
-        ('2', '1PM-to-4PM'),
-        ('3', '4PM-to-7PM'),
-        ('4', '7PM-to-10PM'),
-    )
-
-    deliveryTime = models.CharField(max_length = 1 , choices = time) 
-
-    choice = [('1' , 'Card') , ('2' , 'Cash on Delivery')]
-
-    payment_options = models.CharField(max_length = 1, choices = choice, default = '1' )
-
-
-    # def is_upperclass(self):
-    #     return self.year_in_school in (self.JUNIOR, self.SENIOR)
-
-
 class Popsicle (models.Model) :
     # order = models.ForeignKey(Order, on_delete= models.CASCADE)   <<<CHECK>>>
     name = models.CharField(max_length = 100)
@@ -67,3 +42,48 @@ class Popsicle (models.Model) :
 
     def get_absolute_url(self) :
         return reverse ("detail", args=[str(self.id)])
+
+
+
+class OrderProduct (models.Model) :
+    popsicle = models.ForeignKey(Popsicle, on_delete= models.CASCADE)
+    
+
+    def __str__(self) :
+
+        pass
+
+
+class Order (models.Model) :
+
+    purchaser = models.ForeignKey(Profile, on_delete= models.CASCADE)
+    orderNumber = models.CharField(max_length = 30)
+    ordered = models.BooleanField(default = False)
+    products = models.ManyToManyField(OrderProduct)
+    start_date = models.DateTimeField(auto_now_add=True)
+    ordered_date = models.DateTimeField()
+    location = models.CharField(max_length = 100)
+    
+    time = (
+        
+        ('1', '10AM-to-1PM'),
+        ('2', '1PM-to-4PM'),
+        ('3', '4PM-to-7PM'),
+        ('4', '7PM-to-10PM'),
+    )
+
+    deliveryTime = models.CharField(max_length = 1 , choices = time) 
+
+    choice = [('1' , 'Card') , ('2' , 'Cash on Delivery')]
+
+    payment_options = models.CharField(max_length = 1, choices = choice, default = '1' )
+
+
+    def __str__(self) :
+        return self.purchaser.username
+
+
+    # def is_upperclass(self):
+    #     return self.year_in_school in (self.JUNIOR, self.SENIOR)
+
+
