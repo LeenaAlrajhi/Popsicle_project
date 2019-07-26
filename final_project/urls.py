@@ -34,5 +34,6 @@ urlpatterns = [
     path("logout/", views.user_logout, name = "logout"),
     path("popsicle/<int:pk>/update/", views.PopsicleUpdateData.as_view(), name = "update-popsicle-data"),
     path("popsicle/<int:pk>/delete/", views.PopsicleDelete.as_view(), name = "delete-popsicle"),
+    path("add-to-cart/<int:pk>/", views.add_to_cart, name = "add-to-cart"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -41,8 +41,8 @@ body {
 
 }
 
-.logo samp {
-    margin-top: 20px;
+#navbar .logo a {
+    color: #DFDCE1;
 }
 
 
@@ -88,10 +88,11 @@ body {
     background-position: center center;
     background-size: cover;
     height: 2000px;
+    padding-top: 70px;
 
 }
 
-.outside-contsiner {
+.outside-container {
     width: 80%;
     /* height: 400px; remove */
     /* background-color: rgba(182, 182, 182, 0.349) ; */
@@ -105,14 +106,14 @@ body {
 
 }
 
-.outside-contsiner h1 {
+.outside-container h1 {
     color: #4B2526;
     text-align: center;
     font-size: 60px;
 }
 
 
-.outside-contsiner .middle-contsiner {
+.outside-container .middle-container {
     width: 80%;
     background-color: #a9a5a472;
     margin-left: auto;
@@ -123,7 +124,7 @@ body {
 }
 
 
-.outside-contsiner .middle-contsiner .inside-contsiner {
+.outside-container .middle-container .inside-container {
     width: 100%;
     padding: 40px;
     font-size: 35px;
@@ -137,19 +138,19 @@ body {
 }
 
 
-.outside-contsiner .middle-contsiner .inside-contsiner input, textarea {
+.outside-container .middle-container .inside-container input, textarea {
     width: 100%;
     padding: 10px;
 }
 
-/* .outside-contsiner .middle-contsiner .inside-contsiner label {
+/* .outside-container .middle-container .inside-container label {
     display: block;
 } */
 
 
 /* Home Page */
 
-.outside-contsiner .middle-contsiner .inside-contsiner .item {
+.outside-container .middle-container .inside-container .item {
     padding: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -162,30 +163,30 @@ body {
     font-size: 20px;
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .item img {
+.outside-container .middle-container .inside-container .item img {
     margin-left: auto;
     margin-right: auto;
 }
 
 
-.outside-contsiner .middle-contsiner .inside-contsiner .item strong {
+.outside-container .middle-container .inside-container .item strong {
     font-size: 30px;
     font-style: normal;
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .item strong a {
+.outside-container .middle-container .inside-container .item strong a {
     color: #4B2526;
     text-decoration: none;
 
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .item strong a:hover {
+.outside-container .middle-container .inside-container .item strong a:hover {
     color: #4b2526c8;
     
 
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .currency {
+.outside-container .middle-container .inside-container .currency {
     font-style: normal;
 
 }
@@ -193,15 +194,15 @@ body {
 
 /* Detail Page */
 
-.outside-contsiner .middle-contsiner .inside-contsiner .left-slide {
+.outside-container .middle-container .inside-container .left-slide {
     float: left;
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .right-slide {
+.outside-container .middle-container .inside-container .right-slide {
     float: right;
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .left-slide h2 {
+.outside-container .middle-container .inside-container .left-slide h2 {
     padding-bottom: 30px;
 }
 
@@ -215,15 +216,22 @@ body {
 
 /* Detail Page */
 
-.outside-contsiner .middle-contsiner .inside-contsiner .btn-state a {
+.outside-container .middle-container .inside-container a {
     text-decoration: none;
     color: #DFDCE1;
+    padding-top: 15px;
 
 }
 
-.outside-contsiner .middle-contsiner .inside-contsiner .left-slide del {
+.outside-container .middle-container .inside-container .left-slide del {
     color: #626668;
     padding-left: 20px;
+}
+
+.outside-container .middle-container .inside-container .clr .btn-container .btn {
+    padding-top: 15px;
+
+
 }
 
 
@@ -231,7 +239,7 @@ body {
 
 /* Buttons */
 
-.btn-contsiner {
+.btn-container {
     text-align: center;
     padding-top: 40px;
 }
@@ -271,7 +279,6 @@ body {
     text-align: center;
     padding-top: 15px;
     margin-top: 25px;
-    margin-bottom: 25px;
     width: 230px;
     height: 60px;
     font-size: 22px;

@@ -9,18 +9,18 @@ Popsicles Store | Contact
 
 {% block body %}
 
-<div class="outside-contsiner">
+<div class="outside-container">
 
-    <div class="middle-contsiner" >
+    <div class="middle-container" >
 
         <h1>Need help ? We're here for you !</h1>
             
-        <div class="inside-contsiner">
+        <div class="inside-container">
 
             <form action="" method="POST">
                     {% csrf_token %}
                     {{form.as_p}}
-                    <div class="btn-contsiner"><input type="submit" name="send-message" value="Send Now" class="btn"></div>
+                    <div class="btn-container"><input type="submit" name="send-message" value="Send Now" class="btn"></div>
             </form>
 
         </div>

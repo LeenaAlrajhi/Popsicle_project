@@ -7,20 +7,20 @@ Popsicles Store | Sign Up
 
 {% block body %}
 
-<div class="outside-contsiner">
+<div class="outside-container">
         
-    <div class="middle-contsiner" >
+    <div class="middle-container" >
 
         <h1>Create New Account</h1>
         
-            <div class="inside-contsiner">
+            <div class="inside-container">
 
                     <form action="" method="POST" >
                         {% csrf_token %}
                         {{userForm.as_p}}
                         {{profileForm.as_p}}
                         
-                        <div class="btn-contsiner"><input type="submit" name="signUp" value="Sign Up" class="btn"></div>
+                        <div class="btn-container"><input type="submit" name="signUp" value="Sign Up" class="btn"></div>
                     </form>
                 
             </div>
