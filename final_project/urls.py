@@ -31,5 +31,7 @@ urlpatterns = [
     path("sign_up/", views.sign_up, name = "sign_up"),
     path("login/", views.user_login, name = "login"),
     path("logout/", views.user_logout, name = "logout"),
+    path("popsicle/<int:pk>/update/", views.PopsicleUpdateData.as_view(), name = "update-popsicle-data"),
+    path("popsicle/<int:pk>/delete/", views.PopsicleDelete.as_view(), name = "delete-popsicle"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

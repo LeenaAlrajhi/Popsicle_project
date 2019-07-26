@@ -213,6 +213,16 @@ body {
 /* Contact Page */
 
 
+/* Detail Page */
+
+.outside-contsiner .middle-contsiner .inside-contsiner .btn-state a {
+    text-decoration: none;
+    color: #DFDCE1;
+
+}
+
+
+
 
 /* Buttons */
 
@@ -231,13 +241,12 @@ body {
     border: 0px solid ;
     border-radius: 8px;
 
- 
 }
 
 .btn:hover {
     background-color: #4B2526;
-    color: #c0bec2;
     cursor: pointer;
+
 }
 
 .btn-up {
@@ -251,6 +260,26 @@ body {
 
 .btn-up:hover {
     color: black;
+}
+
+.btn-state {
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 230px;
+    height: 60px;
+    font-size: 22px;
+    /* background-color: #838180; */
+    background-color: #626668b9;
+    border: 0px solid ;
+    border-radius: 8px;
+}
+
+.btn-state:hover {
+    background-color: #626668;
+    cursor: pointer;
+
 }
 
 /* Footer */

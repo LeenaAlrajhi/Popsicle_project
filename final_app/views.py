@@ -1,11 +1,13 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Popsicle, Profile, Order
 from django.contrib.auth.models import User
 from .forms import PopsicleForm, ContactForm, ProfileForm, UserForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, permission_required
+from django.views.generic.edit import UpdateView, DeleteView
 
 def home (request) :
 
@@ -153,5 +155,17 @@ def user_logout (request) :
 
 #     }
 #     return render (request, "product_list.html", data)
+
+
+class PopsicleUpdateData (UpdateView) :
+    model = Popsicle
+    fields = "__all__"
+    template_name = "popsicle_update_form.html"
+
+
+class PopsicleDelete (DeleteView) :
+    model = Popsicle
+    success_url = reverse_lazy("home")
+    template_name = "detail.html"
 
 
