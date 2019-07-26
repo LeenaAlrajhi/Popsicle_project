@@ -23,9 +23,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path("", views.home, name = "home"),
-    path("home/", views.home, name = "home"),
-    path("detail/<int:pk>", views.detail, name = "detail"),
+    # path("", views.home, name = "home"),
+    path("", views.PopsicleHomeView.as_view(), name = "home"),
+    # path("detail/<int:pk>", views.detail, name = "detail"),
+    path("detail/<int:pk>", views.PopsicleDetailView.as_view(), name = "detail"),
     path("add/", views.add_popsicle, name = "add-popsicle"),
     path("contact/", views.contact, name = "contact"),
     path("sign_up/", views.sign_up, name = "sign_up"),

@@ -39,18 +39,19 @@ class Popsicle (models.Model) :
     UPC = models.CharField(max_length = 12)  # Universal Product Code (UPC)
     flavor = models.CharField(max_length = 30) # remove ?
     price = models.DecimalField(max_digits = 10, decimal_places = 2)
+    discount_price = models.DecimalField(max_digits = 10, decimal_places = 2, blank = True, null = True)
     available = models.BooleanField(default = True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    types = (
-        ('I', 'IceCream'),
-        ('F', 'Freezie')
-    )
+    # types = (
+    #     ('I', 'IceCream'),
+    #     ('F', 'Freezie')
+    # )
 
-    popsicle_type = models.CharField(max_length = 1 , choices = types)
-    production_date = models.DateField() # what is the different between default and initial
-    expiration_date = models.DateField()
+    # popsicle_type = models.CharField(max_length = 1 , choices = types)
+    production_date = models.DateField(blank = True, null = True) # what is the different between default and initial
+    expiration_date = models.DateField(blank = True, null = True)
     quantity = models.CharField(max_length = 10) #  all, how I make buyers determine how much they want
     description = models.TextField()
     picture = models.ImageField(upload_to='popsicle-image')

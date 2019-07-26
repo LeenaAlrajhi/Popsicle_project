@@ -5,8 +5,8 @@ from .models import Popsicle, Profile, Order
 class PopsicleForm (forms.ModelForm) :
     class Meta :
         model = Popsicle
-        fields = ["name", "UPC", "flavor", "popsicle_type", "price",
-                  "quantity", "description", "available"]
+        fields = ["name", "UPC", "flavor", "price","discount_price","category",
+                  "production_date","expiration_date","quantity", "description", "available"]
                   
 
 class ContactForm (forms.Form) :

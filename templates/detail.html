@@ -19,7 +19,11 @@ Popsicles Store | {{popsicle.name}}
 
                 <h2>{{popsicle.name}}</h2>
                 <p>Flavor : {{popsicle.flavor}}</p>
+                {% if popsicle.discount_price %}
+                <p>Price : {{popsicle.discount_price}} <em class="currency">SR</em> <del>{{popsicle.price}} <em class="currency">SR</em></del></p>
+                {% else %}
                 <p>Price : {{popsicle.price}} <em class="currency">SR</em></p>
+                {% endif %}
                 <p>Description: {{popsicle.description}}</p>
 
             </div>
@@ -33,8 +37,8 @@ Popsicles Store | {{popsicle.name}}
                 <div class="btn-contsiner"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn" ></div>
             </div>
             
-            <div class="btn-state"><a href="{% url 'update-popsicle-data' %}">Update Popsicle</a></div>
-            <div class="btn-state"><a href="{% url 'delete-popsicle' %}">Delete Popsicle</a></div>
+            <div class="btn-state"><a href="{% url 'update-popsicle-data' popsicle.id %}">Update Popsicle</a></div>
+            <div class="btn-state"><a href="{% url 'delete-popsicle' popsicle.id %}">Delete Popsicle</a></div>
 
                 
         </div>

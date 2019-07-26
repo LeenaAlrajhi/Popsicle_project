@@ -25,14 +25,19 @@ Popsicles Store | Home
             
         <div class="inside-contsiner">
 
-            {% for i in popsicles %}
+            {% for i in object_list %}
             
             <div class="item">
 
-                <img src="{{ i.picture.url }}" width="300" height="450">
+                <a href="{{i.get_absolute_url}}"><img src="{{ i.picture.url }}" width="300" height="450"></a>
                 <p><strong><a href="{{i.get_absolute_url}}">{{i.name}}</strong></a></p>
                 <p>Flavor : {{i.flavor}}</p>
-                <p>Price : {{i.price}} <em class="currency">SR</em></p>
+                {% if i.discount_price %}
+                    <p>Price : {{i.discount_price}} <em class="currency">SR</em></p>
+                {% else %}
+                    <p>Price : {{i.price}} <em class="currency">SR</em></p>
+                {% endif %}
+
 
                 <div class="btn-contsiner"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn"></div>
 
