@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from .models import Popsicle, Profile, Order
 
 class PopsicleForm (forms.ModelForm) :
+    totalـquantity = forms.CharField(label = "Total Quantity")
     class Meta :
         model = Popsicle
         fields = ["name", "UPC", "flavor", "price","discount_price","category",
-                  "production_date","expiration_date","quantity", "description", "available"]
+                  "production_date","expiration_date","totalـquantity", "description", "available"]
                   
 
 class ContactForm (forms.Form) :
@@ -43,4 +44,4 @@ class LoginForm (forms.Form) :
 class OrderForm (forms.ModelForm) :
     class Meta :
         model = Order
-        fields = ["purchaser", "location", "deliveryTime", "payment_options"]
+        fields = ["user", "location", "deliveryTime", "payment_options"]

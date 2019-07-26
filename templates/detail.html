@@ -9,11 +9,11 @@ Popsicles Store | {{popsicle.name}}
 
 {% block body %}
 
-<div class="outside-contsiner">
+<div class="outside-container">
 
-    <div class="middle-contsiner">
+    <div class="middle-container">
             
-        <div class="inside-contsiner">
+        <div class="inside-container">
 
             <div class="left-slide">
 
@@ -33,8 +33,14 @@ Popsicles Store | {{popsicle.name}}
             </div>
             
 
+            <!-- <div class="clr">
+                <div class="btn-container"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn" ></div>
+            </div> -->
+
             <div class="clr">
-                <div class="btn-contsiner"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn" ></div>
+                <div class="btn-container">
+                    <div class="btn"><a href="{{ popsicle.get_add_to_cart_url }}">Add to Cart</a></div>
+                </div>
             </div>
             
             <div class="btn-state"><a href="{% url 'update-popsicle-data' popsicle.id %}">Update Popsicle</a></div>
