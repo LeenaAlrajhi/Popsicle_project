@@ -32,17 +32,48 @@ def add_to_cart (request, pk) :
         if order.products.filter(popsicle__pk = popsicle.pk).exists() : # check if this product is already in the cart
             order_product.quantity += 1
             order_product.save()
+            messages.success(request, "The quantity of popsicle was updated")
+            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+
 
         else :
+            messages.success(request, "This popsicle was added to your cart")
             order.products.add(order_product)
-    
+            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+
     else :
         ordered_date = timezone.now()
         order = Order.objects.create(user = request.user, ordered_date = ordered_date)
         order.products.add(order_product) # link this OrderProduct in Order 
+        return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+        
+    # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect  
+    
 
-    # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect because 
-    return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+
+def remove_from_cart (request, pk) :
+
+    popsicle = get_object_or_404(Popsicle, pk = pk)
+    orderـcurrent = Order.objects.filter(user = request.user, ordered = False) # get only orders that have not yet been ordered
+
+    if orderـcurrent.exists() :
+        order = orderـcurrent[0]
+
+        # check if the OrderProduct is in the Order
+        if order.products.filter(popsicle__pk = popsicle.pk).exists() : # check if this product is already in the cart
+            order_product, created = OrderProduct.objects.filter(popsicle = popsicle, user = request.user, ordered = False)[0]
+            order.products.remove(order_product)
+            messages.success(request, "This popsicle was removed from your cart")
+            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+
+
+        else :
+            messages.info(request, "This popsicle was not in your cart")
+            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+    
+    else :
+        messages.info(request, "You don't have an active order")
+        return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk}) 
 
 
 def home (request) :
