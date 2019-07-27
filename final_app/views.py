@@ -32,6 +32,7 @@ def add_to_cart (request, pk) :
         if order.products.filter(popsicle__pk = popsicle.pk).exists() : # check if this product is already in the cart
             order_product.quantity += 1
             order_product.save()
+<<<<<<< HEAD
             messages.success(request, "The quantity of popsicle was updated")
             return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
 
@@ -41,10 +42,17 @@ def add_to_cart (request, pk) :
             order.products.add(order_product)
             return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
 
+=======
+
+        else :
+            order.products.add(order_product)
+    
+>>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
     else :
         ordered_date = timezone.now()
         order = Order.objects.create(user = request.user, ordered_date = ordered_date)
         order.products.add(order_product) # link this OrderProduct in Order 
+<<<<<<< HEAD
         return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
         
     # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect  
@@ -74,6 +82,11 @@ def remove_from_cart (request, pk) :
     else :
         messages.info(request, "You don't have an active order")
         return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk}) 
+=======
+
+    # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect because 
+    return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+>>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
 
 
 def home (request) :

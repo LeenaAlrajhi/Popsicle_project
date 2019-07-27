@@ -67,9 +67,12 @@ class Popsicle (models.Model) :
     def get_add_to_cart_url(self) :
         return reverse ("add-to-cart", args=[str(self.id)])
 
+<<<<<<< HEAD
     def get_remove_from_cart_url(self) :
         return reverse ("remove-from-cart", args=[str(self.id)])
 
+=======
+>>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
 
 
 class OrderProduct (models.Model) :
