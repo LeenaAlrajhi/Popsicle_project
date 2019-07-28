@@ -39,7 +39,7 @@
                     {% endif %}
 
                      <li><a href="#">{{user.username}}</a></li>
-                     <li><a href="#">Cart</a></li>
+                     <li><a href="{% url 'cart' %}">Cart <i class="fas fa-shopping-cart"></i> <div class="cart-counter-container"><span class="cart-counter"><sup>1</sup></span></a></li>
                      <!-- <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                          width="35" height="35"
                          viewBox="0 0 172 172"
@@ -49,6 +49,16 @@
 
          
         <div id="slideshow">
+
+            <div class="messages">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+            </div>
 
             {% block body %}
             {% endblock %}
@@ -65,6 +75,9 @@
         <footer class="clr">
                 <p>Popsicles &copy; 2019 All rights reserved </p>
         </footer>
+
+        <script src="https://kit.fontawesome.com/7b153c3373.js"></script>
+
              
 </body>
 </html>

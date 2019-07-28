@@ -78,6 +78,29 @@ body {
 
 }
 
+.cart-counter-container {
+    width: 18px;
+    height: 22px;
+    text-align: center;
+    /* margin-left: 10px; */
+    padding-bottom: -30px;
+    padding-top: -30px;
+    border: 1px solid #dfdce18c;
+    /* border-radius: 20px; */
+    position: absolute;
+    top: 4px;
+    right: 25px;
+}
+
+
+.cart-counter {
+    font-size: 17px;
+    width: 0;
+    height: 0;
+
+
+}
+
 
 
 /* Slideshow */
@@ -92,8 +115,12 @@ body {
 
 }
 
+.messages {
+
+}
+
 .outside-container {
-    width: 80%;
+    width: 90%;
     /* height: 400px; remove */
     /* background-color: rgba(182, 182, 182, 0.349) ; */
     /* background-color: #94465048; */
@@ -114,7 +141,7 @@ body {
 
 
 .outside-container .middle-container {
-    width: 80%;
+    width: 90%;
     background-color: #a9a5a472;
     margin-left: auto;
     margin-right: auto;
@@ -154,13 +181,16 @@ body {
     padding: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 30%;
+    margin-bottom: 20px;
+    width: 23%;
+    height: 700px;
     float: left;
     background-color: #a9a5a497;
     /* background-color: #000000; */
 
     color: #283332; 
     font-size: 20px;
+    overflow: hidden;
 }
 
 .outside-container .middle-container .inside-container .item img {
@@ -235,6 +265,112 @@ body {
 }
 
 
+/* Cart Page */
+
+.outside-container .middle-container .inside-container table {
+    width: 100%;
+    padding: 20px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.outside-container .middle-container .inside-container table thead {
+    background-color: #a9a5a483;
+}
+
+.outside-container .middle-container .inside-container table thead tr th {
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+.outside-container .middle-container .inside-container table .head-remove {
+    width: 6%;
+}
+
+.outside-container .middle-container .inside-container table .head-product-image {
+    float: left;
+}
+
+.outside-container .middle-container .inside-container table .head-product-info {
+    width: 31%;
+}
+
+.outside-container .middle-container .inside-container table .head-quantity-and-price {
+    float: right;
+    margin-left: 90px;
+
+}
+
+
+.outside-container .middle-container .inside-container table tbody tr td {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #4b252677;
+
+}
+
+.outside-container .middle-container .inside-container table tbody tr td .product-remove {
+    margin-left: auto;
+
+}
+
+.outside-container .middle-container .inside-container table tbody tr td .product_quantity {
+    width: 68px;
+    height: 32px;
+    border: solid 2px #969696;
+    border-radius: 3px;
+    text-align: center
+}
+
+.outside-container .middle-container .inside-container table tbody tr td .product_quantity span {
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #4a4a4a;
+}
+.outside-container .middle-container .inside-container .cost-overview {
+    width: 540px;
+    height: 270px;
+    background-color: #a9a5a483;
+    color: #494d4e;
+    text-align: right;
+    padding: 20px;
+    margin-top: 50px;
+    float: right;
+    border: 1px solid #4f555721;
+}
+
+.outside-container .middle-container .inside-container .cost-overview ul li {
+    list-style-type: none;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.outside-container .middle-container .inside-container .cost-overview ul li samp {
+    float: left;
+    margin-right: 150px;
+}
+
+.outside-container .middle-container .inside-container .cost-overview ul li span {
+    float: right;
+}
+
+.outside-container .middle-container .inside-container .cost-overview ul .Shipping {
+    padding-bottom: 70px;
+}
+
+
+.outside-container .middle-container .inside-container .cost-overview ul .Total {
+    padding-top: 30px;
+    border-top: 1px solid #4f5557c4;
+}
+
 
 
 /* Buttons */
@@ -268,7 +404,7 @@ body {
     width: 70px;
     height: 70px;
     bottom: 100px;
-    right: 80px;
+    right: 160px;
 }
 
 .btn-up:hover {

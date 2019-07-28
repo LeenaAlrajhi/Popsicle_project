@@ -4,9 +4,10 @@ from .models import Popsicle, Profile, Order
 
 class PopsicleForm (forms.ModelForm) :
     totalـquantity = forms.CharField(label = "Total Quantity")
+    picture = forms.ImageField(required = False)
     class Meta :
         model = Popsicle
-        fields = ["name", "UPC", "flavor", "price","discount_price","category",
+        fields = ["name", "UPC", "flavor", "price","discount_price","category","picture",
                   "production_date","expiration_date","totalـquantity", "description", "available"]
                   
 

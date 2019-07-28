@@ -18,13 +18,13 @@ Popsicles Store | {{popsicle.name}}
             <div class="left-slide">
 
                 <h2>{{popsicle.name}}</h2>
-                <p>Flavor : {{popsicle.flavor}}</p>
+                <p><strong>Flavor : </strong>{{popsicle.flavor}}</p>
                 {% if popsicle.discount_price %}
-                <p>Price : {{popsicle.discount_price}} <em class="currency">SR</em> <del>{{popsicle.price}} <em class="currency">SR</em></del></p>
+                <p><strong>Price : </strong>{{popsicle.discount_price}} <em class="currency">SR</em> <del>{{popsicle.price}} <em class="currency">SR</em></del></p>
                 {% else %}
-                <p>Price : {{popsicle.price}} <em class="currency">SR</em></p>
+                <p><strong>Price : </strong>{{popsicle.price}} <em class="currency">SR</em></p>
                 {% endif %}
-                <p>Description: {{popsicle.description}}</p>
+                <p><strong>Description : </strong>{{popsicle.description}}</p>
 
             </div>
 
@@ -39,7 +39,7 @@ Popsicles Store | {{popsicle.name}}
 
             <div class="clr">
                 <div class="btn-container">
-                    <div class="btn"><a href="{{ popsicle.get_add_to_cart_url }}">Add to Cart</a></div>
+                    <div class="btn"><a href="{{ object.get_add_to_cart_url }}">Add to Cart</a></div>
                 </div>
             </div>
             

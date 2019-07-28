@@ -52,7 +52,7 @@ class Popsicle (models.Model) :
     # popsicle_type = models.CharField(max_length = 1 , choices = types)
     production_date = models.DateField(blank = True, null = True) # what is the different between default and initial
     expiration_date = models.DateField(blank = True, null = True)
-    totalـquantity = models.CharField(max_length = 10) #  all, how I make buyers determine how much they want
+    totalـquantity = models.IntegerField(default = 1) #  all, how I make buyers determine how much they want
     description = models.TextField()
     picture = models.ImageField(upload_to='popsicle-image')
     category = models.CharField(choices = CATEGORY_CHOICES, max_length = 2)
@@ -67,18 +67,15 @@ class Popsicle (models.Model) :
     def get_add_to_cart_url(self) :
         return reverse ("add-to-cart", args=[str(self.id)])
 
-<<<<<<< HEAD
     def get_remove_from_cart_url(self) :
         return reverse ("remove-from-cart", args=[str(self.id)])
 
-=======
->>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
 
 
 class OrderProduct (models.Model) :
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     popsicle = models.ForeignKey(Popsicle, on_delete= models.CASCADE)
-    quantity = models.ImageField(default = 1)
+    quantity = models.IntegerField(default = 1)
     ordered = models.BooleanField(default = False)
 
     def __str__(self) :
@@ -88,7 +85,7 @@ class OrderProduct (models.Model) :
 
 class Order (models.Model) :
     user = models.ForeignKey(User, on_delete= models.CASCADE)
-    orderNumber = models.CharField(max_length = 30)
+    orderNumber = models.IntegerField(default = 1) # check if default = 0 true 
     ordered = models.BooleanField(default = False)
     products = models.ManyToManyField(OrderProduct)
     start_date = models.DateTimeField(auto_now_add=True)
@@ -111,7 +108,9 @@ class Order (models.Model) :
 
 
     def __str__(self) :
-        return self.purchaser.username
+        return self.user.username
+
+    
 
 
     # def is_upperclass(self):

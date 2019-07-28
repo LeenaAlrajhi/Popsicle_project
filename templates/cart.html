@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Popsicles Store | Cart
+{% endblock %}
+
+
+{% block body %}
+
+<div class="outside-container">
+
+    <div class="middle-container">
+            
+        <div class="inside-container">
+
+            <!-- <div class="header-row">
+
+
+            </div> -->
+
+            <table>
+                <thead>
+                    <tr>
+                        <th class="head-remove"></th>
+                        <th class="head-product-image">Product</th>
+                        <th class="head-product-info">Description</th>
+                        <th class="head-quantity-and-price">Price</th>
+                        <th class="head-quantity-and-price">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <div class="product-remove"><td><i class="fas fa-times"></i></td></div>
+                        <td class="product-image"><img src="/media/popsicle-image/Dark-Chocolate-Dipped-Mocha-Popsicles-Photograph-620x930_anxsJaC.jpg" width="250" height="350"></td>
+                        <td class="head-product-info">
+                            <p>Chocolate</p>
+                            <p>Flavor : Light Chocolate</p>
+                            <p>Price : 3.00 SR</p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cost-overview">
+                <ul>
+                    <li class="Subtotal">
+                        <samp>Subtotal :</samp> <span> 3 <em class="currency">SR</em></span>
+                    </li>
+                    <li class="Shipping">
+                        <samp>Shipping :</samp> <span> 30 <em class="currency">SR</em></span>
+                    </li>
+                    <li class="Total">
+                        <strong>
+                            <samp>Total :</samp> <span> 33 <em class="currency">SR</em></span>
+                        </strong>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://kit.fontawesome.com/7b153c3373.js"></script>
+
+
+{% endblock %}

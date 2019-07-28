@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.generic.edit import UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 
+
+ORDER_NUMBER_COUNTER = 0
+
 class PopsicleHomeView (ListView) :
     model = Popsicle
     template_name = "home.html"
@@ -19,41 +22,46 @@ class PopsicleDetailView (DetailView) :
     model = Popsicle
     template_name = "detail.html"
 
+def cart (request,) :
+    order = OrderProduct.objects.all()
+
+    data = {
+        "order" : order
+    }
+
+    return render (request, "cart.html", data)
+  
+
+
 def add_to_cart (request, pk) :
 
     popsicle = get_object_or_404(Popsicle, pk = pk)
-    order_product, created = OrderProduct.objects.get_or_create(popsicle = popsicle, user = request.user, ordered = False) # get or create this Popsicle in OrderProduct and store it in order_product, created variable is a boolean specifying whether a new object was created, to check that the product has not already been purchased
     orderـcurrent = Order.objects.filter(user = request.user, ordered = False) # get only orders that have not yet been ordered
 
     if orderـcurrent.exists() :
         order = orderـcurrent[0]
+        order_product, created = OrderProduct.objects.get_or_create(popsicle = popsicle, user = request.user, ordered = False) # get or create this Popsicle in OrderProduct and store it in order_product, created variable is a boolean specifying whether a new object was created, to check that the product has not already been purchased
 
         # check if the OrderProduct is in the Order
         if order.products.filter(popsicle__pk = popsicle.pk).exists() : # check if this product is already in the cart
             order_product.quantity += 1
             order_product.save()
-<<<<<<< HEAD
             messages.success(request, "The quantity of popsicle was updated")
-            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
 
 
         else :
-            messages.success(request, "This popsicle was added to your cart")
+            # messages.success(request, "This popsicle was added to your cart")
+            print("create the order product")
             order.products.add(order_product)
-            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
 
-=======
-
-        else :
-            order.products.add(order_product)
-    
->>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
     else :
         ordered_date = timezone.now()
-        order = Order.objects.create(user = request.user, ordered_date = ordered_date)
+        orderNumber = len(Order.objects.filter()) + 1 # << (( check )) initialize value of the order number for every order from the store with specific serial number, OR use id ?
+        order = Order.objects.create(user = request.user, ordered_date = ordered_date, orderNumber = orderNumber, location = "Riyadh") # << Take the location from the user 
+        order_product = OrderProduct.objects.create(popsicle = popsicle, user = request.user, ordered = False) # create this Popsicle in OrderProduct and store it in order_product, to check that the product has not already been purchased
         order.products.add(order_product) # link this OrderProduct in Order 
-<<<<<<< HEAD
-        return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
+    
+    return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
         
     # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect  
     
@@ -72,21 +80,14 @@ def remove_from_cart (request, pk) :
             order_product, created = OrderProduct.objects.filter(popsicle = popsicle, user = request.user, ordered = False)[0]
             order.products.remove(order_product)
             messages.success(request, "This popsicle was removed from your cart")
-            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
-
 
         else :
             messages.info(request, "This popsicle was not in your cart")
-            return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
     
     else :
         messages.info(request, "You don't have an active order")
-        return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk}) 
-=======
-
-    # return redirect ("detail", kwargs = {"pk": pk}) # I use redirect because 
-    return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk})
->>>>>>> 80f1d4d50a13512eddbb91d8c54bca049aa4427c
+    
+    return HttpResponseRedirect(reverse("detail"), kwargs = {"pk": pk}) 
 
 
 def home (request) :
@@ -117,9 +118,12 @@ def add_popsicle (request) :
         form = PopsicleForm(request.POST)
 
         if form.is_valid() :
-            popsicle = form.save(commit = True)  
+            popsicle = form.save(commit = False)  
+            if "picture" in request.FILES :
+                popsicle.picture = request.FILES["picture"]
+            popsicle.save()
 
-            messages.success(request, "your popsicle have been added succesfully")
+            messages.success(request, "Your popsicle have been added succesfully")
             return HttpResponseRedirect(reverse("home"))
 
     data = {
