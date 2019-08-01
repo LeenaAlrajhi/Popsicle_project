@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Popsicle, Profile, Order
+from .models import Popsicle, Profile, Order, Address
+from django_countries.fields import CountryField
+
 
 class PopsicleForm (forms.ModelForm) :
     totalـquantity = forms.CharField(label = "Total Quantity")
@@ -26,7 +28,6 @@ class ProfileForm (forms.ModelForm) :
 
 class UserForm (forms.ModelForm) :
     password = forms.CharField(widget=forms.PasswordInput)
-
     class Meta :
         model = User
         fields = ["username", "email", "password"]
@@ -45,4 +46,10 @@ class LoginForm (forms.Form) :
 class OrderForm (forms.ModelForm) :
     class Meta :
         model = Order
-        fields = ["user", "location", "deliveryTime", "payment_options"]
+        fields = ["delivery_Time", "payment_options"]
+
+
+class AddressForm (forms.ModelForm)  :
+    class Meta :
+        model = Address
+        fields = ["address", "country"]

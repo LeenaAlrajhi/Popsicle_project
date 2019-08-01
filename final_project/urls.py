@@ -23,9 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    # path("", views.home, name = "home"),
     path("", views.PopsicleHomeView.as_view(), name = "home"),
-    # path("detail/<int:pk>", views.detail, name = "detail"),
     path("detail/<int:pk>", views.PopsicleDetailView.as_view(), name = "detail"),
     path("add/", views.add_popsicle, name = "add-popsicle"),
     path("contact/", views.contact, name = "contact"),
@@ -34,8 +32,15 @@ urlpatterns = [
     path("logout/", views.user_logout, name = "logout"),
     path("popsicle/<int:pk>/update/", views.PopsicleUpdateData.as_view(), name = "update-popsicle-data"),
     path("popsicle/<int:pk>/delete/", views.PopsicleDelete.as_view(), name = "delete-popsicle"),
-    path("cart/", views.cart, name = "cart"),
+    path("cart/", views.OrderSummaryView.as_view(), name = "cart"),
     path("add-to-cart/<int:pk>/", views.add_to_cart, name = "add-to-cart"),
     path("remove-from-cart/<int:pk>/", views.remove_from_cart, name = "remove-from-cart"),
+    path("remove-product-from-cart/<int:pk>/", views.remove_single_product_from_cart, name = "remove-single-product-from-cart"),
+    path("checkout/", views.checkout , name = "checkout"),
+    # path("checkout/", views.CheckoutView.as_view() , name = "checkout"),
+    path("thank-you/", views.thank , name = "thank"),
+
+
+
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

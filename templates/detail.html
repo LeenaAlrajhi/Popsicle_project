@@ -31,21 +31,18 @@ Popsicles Store | {{popsicle.name}}
             <div class="right-slide">
                 <img src="{{ popsicle.picture.url }}" width="500">
             </div>
-            
-
-            <!-- <div class="clr">
-                <div class="btn-container"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn" ></div>
-            </div> -->
 
             <div class="clr">
                 <div class="btn-container">
                     <div class="btn"><a href="{{ object.get_add_to_cart_url }}">Add to Cart</a></div>
                 </div>
             </div>
-            
+            {% if request.user.is_superuser %}
+
             <div class="btn-state"><a href="{% url 'update-popsicle-data' popsicle.id %}">Update Popsicle</a></div>
             <div class="btn-state"><a href="{% url 'delete-popsicle' popsicle.id %}">Delete Popsicle</a></div>
 
+            {% endif %}
                 
         </div>
 

@@ -20,7 +20,9 @@ Popsicles Store | Contact
             <form action="" method="POST">
                     {% csrf_token %}
                     {{form.as_p}}
-                    <div class="btn-container"><input type="submit" name="send-message" value="Send Now" class="btn"></div>
+                    <div class="btn-container">
+                        <input type="submit" name="send-message" value="Send Now" class="btn">
+                    </div>
             </form>
 
         </div>

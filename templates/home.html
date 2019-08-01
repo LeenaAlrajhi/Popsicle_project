@@ -11,12 +11,7 @@ Popsicles Store | Home
 
     <div class="middle-container">
 
-        
-        <!-- <h1>Choose it, Buy it, eat it and Enjoy <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-            width="80" height="80"
-            viewBox="0 0 172 172"
-            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#4b2526"><g id="surface1"><path d="M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z"></path></g></g></g></svg></h1>
-         -->
+    
             <h1>Can you taste the day <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="80" height="80"
                 viewBox="0 0 172 172"
@@ -29,18 +24,28 @@ Popsicles Store | Home
             
             <div class="item">
 
-                <a href="{{i.get_absolute_url}}"><img src="{{ i.picture.url }}" width="300" height="450"></a>
-                <p><strong><a href="{{i.get_absolute_url}}">{{i.name}}</strong></a></p>
-                <p>Flavor : {{i.flavor}}</p>
-                {% if i.discount_price %}
-                    <p>Price : {{i.discount_price}} <em class="currency">SR</em></p>
+                <div class="item-info-container">
+
+                    <a href="{{i.get_absolute_url}}"><img src="{{ i.picture.url }}" width="300" height="450"></a>
+                    <p><strong><a href="{{i.get_absolute_url}}">{{i.name}}</strong></a></p>
+                    <p>Flavor : {{i.flavor}}</p>
+                    {% if i.discount_price %}
+                        <p>Price : {{i.discount_price}} <em class="currency">SR</em></p>
+                    {% else %}
+                        <p>Price : {{i.price}} <em class="currency">SR</em></p>
+                    {% endif %}
+                    
+                </div>
+
+                {% if user.is_authenticated %}
+                <div class="btn-container">
+                    <div class="btn" id="btn-text"><a href="{{ i.get_add_to_cart_url }}">Add to Cart</a></div>
+                </div>
                 {% else %}
-                    <p>Price : {{i.price}} <em class="currency">SR</em></p>
+                <div class="btn-container">
+                    <div class="btn" id="btn-text"><a href="{% url 'login' %}">Add to Cart</a></div>
+                </div>
                 {% endif %}
-
-
-                <div class="btn-container"><input type="submit" name="add-to-cart" value="Add to Cart" class="btn"></div>
-
             </div>
             {% empty %}
             <p>Sorry, now the store is empty and popsicles will be added soon</p>
@@ -48,9 +53,63 @@ Popsicles Store | Home
 
                 
         </div>
+        {% if is_paginated %}
+        <div class="pages-btn-container">
+            <ul>
+            {% if page_obj.has_previous %}
+                
+            <div class= "single-page-container">
+                <a href="?page={{ page_obj.previous_page_number }}">
+                    <li class="pages">
+                        
+                            <i class="fas fa-chevron-left"></i>
+                        
+                    </li>
+                </a>
+            </div>
+
+            {% endif %}
+            {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <div class= "single-page-container">
+                        <li class="pages"><span>{{ i }} <span class="sr-only"></span></span></li>
+                    </div>
+                {% else %}
+                    <div class= "single-page-container">
+                        <a href="?page={{ i }}">
+                            <li class="pages">{{ i }}</li>
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+
+            <div class= "single-page-container">
+                <a href="?page={{ page_obj.next_page_number }}">
+                    <li class="pages">
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                </a>
+            </div>
+
+            {% endif %}
+
+            </ul>
+            
+        </div>
+        {% endif %}
 
     </div>
 
 </div>
 
 {% endblock %}
+
+{% for i in paginator.page_range %}
+{% if page_obj.number == i %}
+  <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+{% else %}
+  <li><a href="?page={{ i }}">{{ i }}</a></li>
+{% endif %}
+{% endfor %}

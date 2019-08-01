@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+§
 {% block title%}
 Popsicles Store | Login
 {% endblock %}
@@ -21,7 +21,11 @@ Popsicles Store | Login
                         
                         <div class="btn-container"><input type="submit" name="Login" value="Login" class="btn"></div>
                     </form>
-                
+
+                    <div class="btn-access-to-account-container">
+                        <p>Don't have an account?</p>
+                        <div class="btn-access-to-account"><a href="{% url 'sign_up' %}">Sign Up</a></div>
+                    </div>
             </div>
     </div>
 

@@ -12,52 +12,89 @@ Popsicles Store | Cart
     <div class="middle-container">
             
         <div class="inside-container">
-
-            <!-- <div class="header-row">
-
-
-            </div> -->
+            {%if  order.products.all %}
 
             <table>
                 <thead>
                     <tr>
                         <th class="head-remove"></th>
+                        <th class="head-id"></th>
                         <th class="head-product-image">Product</th>
                         <th class="head-product-info">Description</th>
-                        <th class="head-quantity-and-price">Price</th>
-                        <th class="head-quantity-and-price">Quantity</th>
+                        <th class="head-quantity">Quantity</th>
+                        <th class="head-price">Price</th>
+
                     </tr>
                 </thead>
                 <tbody>
+                {% for order_product in order.products.all %}
                     <tr>
-                        <div class="product-remove"><td><i class="fas fa-times"></i></td></div>
-                        <td class="product-image"><img src="/media/popsicle-image/Dark-Chocolate-Dipped-Mocha-Popsicles-Photograph-620x930_anxsJaC.jpg" width="250" height="350"></td>
-                        <td class="head-product-info">
-                            <p>Chocolate</p>
-                            <p>Flavor : Light Chocolate</p>
-                            <p>Price : 3.00 SR</p>
+                        <div class="product-remove"><td><a href="{{ order_product.popsicle.get_remove_from_cart_url }}"><i class="fas fa-times"></i></a></td></div>
+                        <td>{{ forloop.counter }}</td>
+                        <td class="product-image"><img src="{{ order_product.popsicle.picture.url }}" width="250" height="370"></td>
+                        <td class="product-info">
+                            <p>{{ order_product.popsicle.name }}</p>
+                            <p>{{ order_product.popsicle.flavor }}</p>
+                            <p>{{ order_product.popsicle.description }}</p>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td class="product-quantity">
+                            <a href="{% url 'remove-single-product-from-cart' order_product.popsicle.pk %}"><i class="fas fa-minus"></i></a>
+                            &nbsp;&nbsp; {{ order_product.quantity }}&nbsp;&nbsp;
+                            <a href="{% url 'add-to-cart' order_product.popsicle.pk %}"><i class="fas fa-plus"></i></a>
+                        </td>
+                        <td class="product-price"> 
+                        {% if order_product.popsicle.discount_price %}
+                            {{ order_product.get_total_product_discount_price }} SR
+                        {% else %}
+                            {{ order_product.get_total_product_price }} SR
+                        {% endif%}
+                        </td>
                     </tr>
+                {% endfor %}
                 </tbody>
             </table>
 
+            
             <div class="cost-overview">
-                <ul>
-                    <li class="Subtotal">
-                        <samp>Subtotal :</samp> <span> 3 <em class="currency">SR</em></span>
-                    </li>
-                    <li class="Shipping">
-                        <samp>Shipping :</samp> <span> 30 <em class="currency">SR</em></span>
-                    </li>
-                    <li class="Total">
-                        <strong>
-                            <samp>Total :</samp> <span> 33 <em class="currency">SR</em></span>
-                        </strong>
-                    </li>
-                </ul>
+                    <ul>
+                        <div class="subtotal-and-shipping-container">
+                        <li class="Subtotal">
+                            <samp>Subtotal :</samp> <span> {{ order.get_subtotal }} <em class="currency">SR</em></span>
+                        </li>
+                        {% if order.get_shipping == "Free" %}
+                        <li class="Shipping">
+                            <samp>Shipping :</samp> <span> {{ order.get_shipping }} <em class="currency"></em></span>
+                        </li>
+                        {% else %}
+                        <li class="Shipping">
+                            <samp>Shipping :</samp> <span> {{ order.get_shipping }} <em class="currency">SR</em></span>
+                        </li>
+                        </div>
+                        {% endif%}
+                        <li class="Total">
+                            <strong>
+                                <samp>Total :</samp> <span> {{ order.get_total }} <em class="currency">SR</em></span>
+                            </strong>
+                        </li>
+                    </ul>    
             </div>
+
+            <div class="clr" id="cart-btn-container"> 
+                <div class="btn-float">
+                        <div class="btn-state"><a href="{% url 'home' %}">Continue Shopping</a></div>
+                </div>
+
+                <div class="btn-float">
+                    <div class="btn-container">
+                        <div class="btn" id="btn-font-resize"><a href="{% url 'checkout' %}">Complete the Shopping</a></div>
+                    </div>
+                </div>
+            </div>
+            
+            {% else %}
+             <h1>cart is empty</h1>
+            {%  endif %}
+         
             
         </div>
 

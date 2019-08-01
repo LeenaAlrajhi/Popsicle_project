@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Popsicles Store | Home
+{% endblock %}
+
+
+{% block body %}
+
+<div class="outside-container">
+
+    <div class="middle-container">
+
+        
+        <div class="inside-container">
+
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{orderForm.as_p}}
+                    {{addressForm.as_p}}
+                    <div class="btn-container">
+                            <div class="btn" id="btn-font-resize"><a href="{% url 'thank' %}">Checkout</a></div>
+                    </div>                </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
